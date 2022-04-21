@@ -59,28 +59,19 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
+    use super::*;
     use crate::linked;
 
-    use super::*;
-
     #[test]
-    fn test_1() {
+    fn test_add_two_numbers() {
         assert_eq!(
             Solution::add_two_numbers(linked!(2, 4, 3), linked!(5, 6, 4)),
             linked!(7, 0, 8)
         );
-    }
-
-    #[test]
-    fn test_2() {
         assert_eq!(
             Solution::add_two_numbers(linked!(0), linked!(0)),
             linked!(0)
         );
-    }
-
-    #[test]
-    fn test_3() {
         assert_eq!(
             Solution::add_two_numbers(linked!(9, 9, 9, 9, 9, 9, 9), linked!(9, 9, 9, 9)),
             linked!(8, 9, 9, 9, 0, 0, 0, 1)

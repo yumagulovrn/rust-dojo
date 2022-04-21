@@ -52,7 +52,7 @@
  * Step 3: "4193 with words" ("4193" is read in; reading stops because the next character is a non-digit)
  *              ^
  * The parsed integer is 4193.
- * Since 4193 is in the range [-231, 231 - 1], the final result is 4193.
+ * Since 4193 is in the range [-2^31, 2^31 - 1], the final result is 4193.
  *  
  *
  * Constraints:
@@ -102,22 +102,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_1() {
+    fn test_my_atoi() {
         assert_eq!(Solution::my_atoi("42".to_string()), 42);
-    }
-
-    #[test]
-    fn test_2() {
         assert_eq!(Solution::my_atoi("   -42".to_string()), -42);
-    }
-
-    #[test]
-    fn test_3() {
         assert_eq!(Solution::my_atoi("4193 with words".to_string()), 4193);
-    }
-
-    #[test]
-    fn test_overflow() {
         assert_eq!(Solution::my_atoi("-2147483648".to_string()), i32::MIN);
+        assert_eq!(Solution::my_atoi("2147483648".to_string()), i32::MAX);
     }
 }

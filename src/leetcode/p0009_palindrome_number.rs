@@ -46,22 +46,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_1() {
+    fn test_is_palindrome() {
         assert_eq!(Solution::is_palindrome(121), true);
-    }
-
-    #[test]
-    fn test_2() {
         assert_eq!(Solution::is_palindrome(-121), false);
-    }
-
-    #[test]
-    fn test_3() {
         assert_eq!(Solution::is_palindrome(10), false);
-    }
-
-    #[test]
-    fn test_overflow() {
         assert_eq!(Solution::is_palindrome(i32::MAX), false);
+        assert_eq!(Solution::is_palindrome(i32::MIN), false);
     }
 }

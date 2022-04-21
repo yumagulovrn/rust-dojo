@@ -61,22 +61,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_1() {
+    fn test_is_match() {
         assert_eq!(Solution::is_match("aa".to_string(), "a".to_string()), false);
-    }
-
-    #[test]
-    fn test_2() {
         assert_eq!(Solution::is_match("aa".to_string(), "a*".to_string()), true);
-    }
-
-    #[test]
-    fn test_3() {
         assert_eq!(Solution::is_match("ab".to_string(), ".*".to_string()), true);
-    }
-
-    #[test]
-    fn test_4() {
         assert_eq!(
             Solution::is_match("aaa".to_string(), "a*a".to_string()),
             true

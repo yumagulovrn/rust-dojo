@@ -56,23 +56,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_1() {
+    fn test_convert() {
         assert_eq!(
             Solution::convert("PAYPALISHIRING".to_string(), 3),
             "PAHNAPLSIIGYIR"
         );
-    }
-
-    #[test]
-    fn test_2() {
         assert_eq!(
             Solution::convert("PAYPALISHIRING".to_string(), 4),
             "PINALSIGYAHRPI"
         );
-    }
-
-    #[test]
-    fn test_3() {
         assert_eq!(Solution::convert("A".to_string(), 1), "A");
     }
 }

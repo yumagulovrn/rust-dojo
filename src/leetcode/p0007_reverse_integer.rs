@@ -46,22 +46,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_1() {
+    fn test_reverse() {
         assert_eq!(Solution::reverse(123), 321);
-    }
-
-    #[test]
-    fn test_2() {
         assert_eq!(Solution::reverse(-123), -321);
-    }
-
-    #[test]
-    fn test_3() {
         assert_eq!(Solution::reverse(120), 21);
-    }
-
-    #[test]
-    fn test_overflow() {
         assert_eq!(Solution::reverse(2147483647), 0);
     }
 }

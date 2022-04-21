@@ -81,12 +81,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_1() {
+    fn test_longest_palindrome() {
         assert_eq!(Solution::longest_palindrome("babad".to_string()), "bab");
-    }
-
-    #[test]
-    fn test_2() {
         assert_eq!(Solution::longest_palindrome("cbbd".to_string()), "bb");
     }
 }
