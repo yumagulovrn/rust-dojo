@@ -32,8 +32,27 @@ struct Solution;
 
 impl Solution {
     pub fn is_match(s: String, p: String) -> bool {
-        // TODO: implement this.
-        true
+        let c_len = p.len() + 1;
+        let length = (s.len() + 1) * c_len;
+        let s: Vec<char> = s.chars().collect();
+        let p: Vec<char> = p.chars().collect();
+        let mut dp = vec![false; length];
+
+        dp[length - 1] = true;
+
+        for i in (0..=s.len()).rev() {
+            for j in (0..p.len()).rev() {
+                let first_match = i < s.len() && (p[j] == s[i] || p[j] == '.');
+
+                if j + 1 < p.len() && p[j + 1] == '*' {
+                    dp[i * c_len + j] =
+                        dp[i * c_len + j + 2] || first_match && dp[(i + 1) * c_len + j];
+                } else {
+                    dp[i * c_len + j] = first_match && dp[(i + 1) * c_len + j + 1];
+                }
+            }
+        }
+        dp[0]
     }
 }
 
