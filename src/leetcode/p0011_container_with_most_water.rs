@@ -57,16 +57,19 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::rstest;
 
-    #[test]
-    fn test_max_area() {
-        assert_eq!(Solution::max_area(vec![1, 8, 6, 2, 5, 4, 8, 3, 7]), 49);
-        assert_eq!(Solution::max_area(vec![1, 1]), 1);
+    #[rstest]
+    #[case(vec![1, 8, 6, 2, 5, 4, 8, 3, 7], 49)]
+    #[case(vec![1, 1], 1)]
+    fn max_area(#[case] input: Vec<i32>, #[case] expected: i32) {
+        assert_eq!(Solution::max_area(input), expected);
     }
 
-    #[test]
-    fn test_max_area_iter() {
-        assert_eq!(Solution::max_area_iter(vec![1, 8, 6, 2, 5, 4, 8, 3, 7]), 49);
-        assert_eq!(Solution::max_area_iter(vec![1, 1]), 1);
+    #[rstest]
+    #[case(vec![1, 8, 6, 2, 5, 4, 8, 3, 7], 49)]
+    #[case(vec![1, 1], 1)]
+    fn max_area_iter(#[case] input: Vec<i32>, #[case] expected: i32) {
+        assert_eq!(Solution::max_area_iter(input), expected);
     }
 }

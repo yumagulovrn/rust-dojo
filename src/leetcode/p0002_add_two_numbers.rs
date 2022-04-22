@@ -61,20 +61,17 @@ impl Solution {
 mod tests {
     use super::*;
     use crate::linked;
+    use rstest::rstest;
 
-    #[test]
-    fn test_add_two_numbers() {
-        assert_eq!(
-            Solution::add_two_numbers(linked!(2, 4, 3), linked!(5, 6, 4)),
-            linked!(7, 0, 8)
-        );
-        assert_eq!(
-            Solution::add_two_numbers(linked!(0), linked!(0)),
-            linked!(0)
-        );
-        assert_eq!(
-            Solution::add_two_numbers(linked!(9, 9, 9, 9, 9, 9, 9), linked!(9, 9, 9, 9)),
-            linked!(8, 9, 9, 9, 0, 0, 0, 1)
-        );
+    #[rstest]
+    #[case(linked!(2, 4, 3), linked!(5, 6, 4), linked!(7, 0, 8))]
+    #[case(linked!(0), linked!(0), linked!(0))]
+    #[case(linked!(9, 9, 9, 9, 9, 9, 9), linked!(9, 9, 9, 9), linked!(8, 9, 9, 9, 0, 0, 0, 1))]
+    fn add_two_numbers(
+        #[case] l1: Option<Box<ListNode>>,
+        #[case] l2: Option<Box<ListNode>>,
+        #[case] expected: Option<Box<ListNode>>,
+    ) {
+        assert_eq!(Solution::add_two_numbers(l1, l2), expected);
     }
 }

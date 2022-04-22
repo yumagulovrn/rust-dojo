@@ -50,20 +50,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::rstest;
 
-    #[test]
-    fn test_length_of_longest_substring() {
-        assert_eq!(
-            Solution::length_of_longest_substring("abcabcbb".to_string()),
-            3
-        );
-        assert_eq!(
-            Solution::length_of_longest_substring("bbbbb".to_string()),
-            1
-        );
-        assert_eq!(
-            Solution::length_of_longest_substring("pwwkew".to_string()),
-            3
-        );
+    #[rstest]
+    #[case("abcabcbb", 3)]
+    #[case("bbbbb", 1)]
+    #[case("pwwkew", 3)]
+    fn length_of_longest_substring(#[case] input: String, #[case] expected: i32) {
+        assert_eq!(Solution::length_of_longest_substring(input), expected);
     }
 }

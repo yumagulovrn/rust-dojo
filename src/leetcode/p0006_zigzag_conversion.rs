@@ -54,17 +54,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::rstest;
 
-    #[test]
-    fn test_convert() {
-        assert_eq!(
-            Solution::convert("PAYPALISHIRING".to_string(), 3),
-            "PAHNAPLSIIGYIR"
-        );
-        assert_eq!(
-            Solution::convert("PAYPALISHIRING".to_string(), 4),
-            "PINALSIGYAHRPI"
-        );
-        assert_eq!(Solution::convert("A".to_string(), 1), "A");
+    #[rstest]
+    #[case("PAYPALISHIRING", 3, "PAHNAPLSIIGYIR")]
+    #[case("PAYPALISHIRING", 4, "PINALSIGYAHRPI")]
+    #[case("A", 1, "A")]
+    fn convert(#[case] s: String, #[case] num_rows: i32, #[case] expected: String) {
+        assert_eq!(Solution::convert(s, num_rows), expected);
     }
 }

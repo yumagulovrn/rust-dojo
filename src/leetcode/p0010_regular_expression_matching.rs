@@ -59,15 +59,14 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::rstest;
 
-    #[test]
-    fn test_is_match() {
-        assert_eq!(Solution::is_match("aa".to_string(), "a".to_string()), false);
-        assert_eq!(Solution::is_match("aa".to_string(), "a*".to_string()), true);
-        assert_eq!(Solution::is_match("ab".to_string(), ".*".to_string()), true);
-        assert_eq!(
-            Solution::is_match("aaa".to_string(), "a*a".to_string()),
-            true
-        );
+    #[rstest]
+    #[case("aa", "a", false)]
+    #[case("aa", "a*", true)]
+    #[case("ab", ".*", true)]
+    #[case("aaa", "a*a", true)]
+    fn is_match(#[case] s: String, #[case] p: String, #[case] expected: bool) {
+        assert_eq!(Solution::is_match(s, p), expected);
     }
 }

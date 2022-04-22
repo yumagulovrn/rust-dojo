@@ -100,13 +100,15 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::rstest;
 
-    #[test]
-    fn test_my_atoi() {
-        assert_eq!(Solution::my_atoi("42".to_string()), 42);
-        assert_eq!(Solution::my_atoi("   -42".to_string()), -42);
-        assert_eq!(Solution::my_atoi("4193 with words".to_string()), 4193);
-        assert_eq!(Solution::my_atoi("-2147483648".to_string()), i32::MIN);
-        assert_eq!(Solution::my_atoi("2147483648".to_string()), i32::MAX);
+    #[rstest]
+    #[case("42", 42)]
+    #[case("   -42", -42)]
+    #[case("4193 with words", 4193)]
+    #[case("-2147483648", i32::MIN)]
+    #[case("2147483648", i32::MAX)]
+    fn my_atoi(#[case] input: String, #[case] expected: i32) {
+        assert_eq!(Solution::my_atoi(input), expected);
     }
 }

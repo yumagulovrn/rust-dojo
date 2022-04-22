@@ -79,10 +79,12 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::rstest;
 
-    #[test]
-    fn test_longest_palindrome() {
-        assert_eq!(Solution::longest_palindrome("babad".to_string()), "bab");
-        assert_eq!(Solution::longest_palindrome("cbbd".to_string()), "bb");
+    #[rstest]
+    #[case("babad", "bab")]
+    #[case("cbbd", "bb")]
+    fn longest_palindrome(#[case] input: String, #[case] expected: String) {
+        assert_eq!(Solution::longest_palindrome(input), expected);
     }
 }

@@ -69,16 +69,16 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::rstest;
 
-    #[test]
-    fn test_find_median_sorted_arrays() {
-        assert_eq!(
-            Solution::find_median_sorted_arrays(vec![1, 3], vec![2]),
-            2.0
-        );
-        assert_eq!(
-            Solution::find_median_sorted_arrays(vec![1, 2], vec![3, 4]),
-            2.5
-        );
+    #[rstest]
+    #[case(vec![1, 3], vec![2], 2.0)]
+    #[case(vec![1, 2], vec![3, 4], 2.5)]
+    fn find_median_sorted_arrays(
+        #[case] nums1: Vec<i32>,
+        #[case] nums2: Vec<i32>,
+        #[case] expected: f64,
+    ) {
+        assert_eq!(Solution::find_median_sorted_arrays(nums1, nums2), expected);
     }
 }

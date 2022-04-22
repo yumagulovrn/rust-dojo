@@ -44,13 +44,15 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::rstest;
 
-    #[test]
-    fn test_is_palindrome() {
-        assert_eq!(Solution::is_palindrome(121), true);
-        assert_eq!(Solution::is_palindrome(-121), false);
-        assert_eq!(Solution::is_palindrome(10), false);
-        assert_eq!(Solution::is_palindrome(i32::MAX), false);
-        assert_eq!(Solution::is_palindrome(i32::MIN), false);
+    #[rstest]
+    #[case(121, true)]
+    #[case(-121, false)]
+    #[case(10, false)]
+    #[case(i32::MAX, false)]
+    #[case(i32::MIN, false)]
+    fn is_palindrome(#[case] input: i32, #[case] expected: bool) {
+        assert_eq!(Solution::is_palindrome(input), expected);
     }
 }

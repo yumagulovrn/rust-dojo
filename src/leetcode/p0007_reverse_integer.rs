@@ -44,12 +44,14 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::rstest;
 
-    #[test]
-    fn test_reverse() {
-        assert_eq!(Solution::reverse(123), 321);
-        assert_eq!(Solution::reverse(-123), -321);
-        assert_eq!(Solution::reverse(120), 21);
-        assert_eq!(Solution::reverse(2147483647), 0);
+    #[rstest]
+    #[case(123, 321)]
+    #[case(-123, -321)]
+    #[case(120, 21)]
+    #[case(2147483647, 0)]
+    fn reverse(#[case] input: i32, #[case] expected: i32) {
+        assert_eq!(Solution::reverse(input), expected);
     }
 }
