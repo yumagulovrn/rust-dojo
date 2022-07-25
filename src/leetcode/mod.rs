@@ -13,4 +13,5 @@ mod p0012_integer_to_roman;
 mod p0013_roman_to_integer;
 mod p0014_longest_common_prefix;
 mod p0015_3sum;
+mod p0278_first_bad_version;
 mod p0714_binary_search;
