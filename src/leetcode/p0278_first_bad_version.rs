@@ -28,8 +28,7 @@ struct Solution {
 }
 
 impl Solution {
-    #[allow(non_snake_case)]
-    fn isBadVersion(&self, version: i32) -> bool {
+    fn is_bad_version(&self, version: i32) -> bool {
         version >= self.bad_version
     }
 
@@ -37,7 +36,7 @@ impl Solution {
         let (mut low, mut high) = (0, n);
         while low <= high {
             let mid = low + (high - low) / 2;
-            match self.isBadVersion(mid) {
+            match self.is_bad_version(mid) {
                 false => low = mid + 1,
                 true => high = mid - 1,
             }

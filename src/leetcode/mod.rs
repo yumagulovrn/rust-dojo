@@ -15,4 +15,5 @@ mod p0014_longest_common_prefix;
 mod p0015_3sum;
 mod p0035_search_insert_position;
 mod p0278_first_bad_version;
+mod p0374_guess_number_higher_or_lower;
 mod p0714_binary_search;
